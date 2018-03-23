@@ -1,4 +1,6 @@
 $(document).ready(function() {
+    console.log('ready');
+
     var allTheDoggos = [
         {
             name: 'Petunia', 
@@ -45,14 +47,92 @@ $(document).ready(function() {
     ];
 
     var allPuppies = []; // filter allTheDoggos for just the puppies (< 2 years)
+        var allPuppies = allTheDoggos.filter(allTheDoggos => allTheDoggos.age <2);
+                console.log(allPuppies);
+        
+         var puppieUrl = allPuppies.forEach(function(array){
+                var puppyImageUrl = array.photo;       
+                 var puppyImageUrl = array.photo;       
+                var puppyName = array.name
+            $('#puppies').append(`<div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="${puppyUrl}" alt="Card image cap">
+        <div class="card-body">
+        <h5 class="card-title"> ${puppyName}</h5>
+        </div>
+        </div>`)
 
-    var doggosWithPNames = []; // fillter allTheDoggos for those whose names start with P 
+               });
 
-    var doggosInSf = []; // etc
 
-    var seniorDoggos = []; // etc
+
+    // var doggosWithPNames = []; // fillter allTheDoggos for those whose names start with P 
+    var doggosWithPNames = allTheDoggos.filter(dog => dog.name[0] === 'P');
+           console.log(doggosWithPNames)
+        // (allTheDoggos => allTheDoggos.names[0] === 'P')
+
+        var doggosWithPNames = doggosWithPNames.forEach(function(array){
+            var puppyImageUrl = array.photo;       
+             var puppyImageUrl = array.photo;       
+            var puppyName = array.name
+            $('#name-p').append(`<div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="${puppyUrl}" alt="Card image cap">
+        <div class="card-body">
+        <h5 class="card-title"> ${puppyName}</h5>
+        </div>
+        </div>`)
+
+               });
+
+
+    var doggosInSf = allTheDoggos.filter(dog => dog.city === 'SF');
+        console.log(doggosInSf);
+
+          var doggosInSf = doggosInSf.forEach(function(array){
+            var puppyImageUrl = array.photo;       
+            var puppyName = array.name
+           $('#SF').append(`<div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="${puppyUrl}" alt="Card image cap">
+        <div class="card-body">
+        <h5 class="card-title"> ${puppyName}</h5>
+        </div>
+        </div>`)
+
+               });
+
+
+    var seniorDoggos = allTheDoggos.filter(dog => dog.age >7);
+           console.log(seniorDoggos)
+           seniorDoggos.forEach(function(puppyObj){
+           var puppyUrl = puppyObj.photo    
+           var puppyName = puppyObj.name
+           $('#senior').append(`<div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="${puppyUrl}" alt="Card image cap">
+        <div class="card-body">
+        <h5 class="card-title"> ${puppyName}</h5>
+        </div>
+        </div>`)
+
+               });
+
+
 
     var californiaDoggos = []; // etc
+
+        var californiaDoggos = allTheDoggos.filter(dog => dog.state === 'CA');
+        console.log(californiaDoggos);
+
+          var californiaDoggos = californiaDoggos.forEach(function(array){
+            var puppyImageUrl = array.photo;       
+         var puppyImageUrl = array.photo;       
+            var puppyName = array.name
+           $('#ca').append(`<div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="${puppyUrl}" alt="Card image cap">
+        <div class="card-body">
+        <h5 class="card-title"> ${puppyName}</h5>
+        </div>
+        </div>`)
+
+               });
 
     // 1. Figure out where each array of doggos should be displayed in the index.html
     // 2. Iterate through each array and append the doggo's name and photo to the HTML
